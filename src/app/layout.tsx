@@ -24,23 +24,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100 flex flex-col`}
-        >
-          <ConvexClientProvider>{children}</ConvexClientProvider>
-
-          <Footer/>
-          <Toaster/>
-
-          
-        </body>
-      </html>
-    </ClerkProvider>
+    // Add suppressHydrationWarning here
+    <html lang="en" suppressHydrationWarning>
+      <body className={`... your existing classes ... antialiased min-h-screen bg-gradient-to-b`}>
+        {children}
+      </body>
+    </html>
   );
 }
